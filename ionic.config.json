@@ -1,0 +1,7 @@
+{
+  "name": "simplestock-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
