@@ -1,0 +1,14 @@
+<div class="sm:mb-1 lg:mb-2 xl:mb-3">
+    <input [type]="type"
+    [value]="value"
+    (input)="updateValue($event)"
+    (blur)="onTouch()"
+    [placeholder]="placeholder"
+    [ngClass]="_errors && touched ? 'dark:outline-red-700 outline-red-500' :'focus:outline-prussian-blue-400 
+    dark:focus:outline-dark-prussian-blue-200'"
+    class="w-full xs:px-4 xs:py-3 sm:p-4 sm:text-sm lg:text-md xl:text-xl outline-none 
+    bg-gray-100 rounded-2xl placeholder:placeholder-gray-400 shadow-md
+    dark:bg-gray-700 
+   transition-all duration-300 mb-2">
+   <div *ngIf=" touched && _errors" class="xs:text-xs lg:text-md xs:text-red-700 xs:dark:text-red-400" > {{ _errors }} </div>
+</div>

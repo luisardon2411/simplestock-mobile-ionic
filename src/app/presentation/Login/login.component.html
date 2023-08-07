@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true">
+    <!-- Container -->
+    <section class="h-full w-sreen grid place-content-center overflow-hidden 2xl:py-[120px] 2xl:px-[150px] xl:py-[70px] xl:px-[60px] lg:py-[30px] lg:px-[14px]
+    xs:px-7 xs:py-5">
+                <!-- Image -->
+        <section>
+            <svg xmlns="http://www.w3.org/2000/svg" 
+            class="absolute right-0 bottom-0 -z-10 2xl:h-[960px] w-auto xl:h-[700px] lg:h-[480px] xs:hidden lg:flex"
+            xmlns:xlink="http://www.w3.org/1999/xlink" width="960" height="1083.161" viewBox="0 0 960 1083.161">
+            <defs>
+                <style>
+                    .cls-1 {
+                        fill: url(#linear-gradient);
+                    }
+                </style>
+                <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                    <stop offset="0" stop-color="#014f86"/>
+                    <stop offset="0.205" stop-color="#014778"/>
+                    <stop offset="0.716" stop-color="#014474"/>
+                    <stop offset="1" stop-color="#012843"/>
+                </linearGradient>
+            </defs>
+            <path id="form-1" class="cls-1" d="M1920,0,960,1083.161h960Z" transform="translate(-960)"/>
+        </svg>          
+    </section>
+        <div class="flex xs:flex-col xs:justify-center xs:items-center lg:flex-row">
+            <div class="2xl:flex 2xl:flex-col 2xl:justify-start 2xl:items-start 2xl:w-[750px] xl:w-[500px] lg:w-[450px] gap-0">
+                <!-- Logo -->
+                <div class="flex justify-center">
+                    <img src="../../assets/images/0.png" alt="" srcset="" class="xs:h-36 xs:w-36 object-contain 2xl:h-44 2xl:w-44 xl:h-36 xl:w-36 lg:h-28 lg:w-28 lg:ml-6 xl:m-4 2xl:m-0 cursor-pointer" >
+                </div>
+                    <!-- Form -->
+                    <form [formGroup]="form" (ngSubmit)="NgSubmit()" method="post" class="flex flex-col xs:gap-2 xl:pl-[60px]">
+                        <h1 class="font-bold xs:text-xs xs:text-center 2xl:text-3xl xl:text-2xl lg:uppercase tracking-wide" >Bienvenido de nuevo</h1>
+                        <div class="relative xs:mb-3 2xl:mb-1 xl:mb-4 lg:mb-4">
+                            <h5 class="xs:text-xs xs:text-center lg:text-start lg:text-sm xl:text-sm 2xl:text-base">Ingresa tus credenciales para acceder</h5>
+                        </div>
+                        <app-input formControlName="username" [type]="'text'" placeholder="jhon.sweet" [errorMessage]="form.get('username')?.errors" />
+                        <app-input formControlName="password" [type]="'password'" placeholder="* * * * * * *" [errorMessage]="form.get('password')?.errors" />
+                        <div class="flex xs:gap-3 justify-between xs:mb-2">
+                            <div class="relative flex justify-center items-center gap-2">
+                                <input type="checkbox" [checked]="saveRememberMe()" id="rememberMe" class="outline-prussian-blue-300 transition-all duration-300">
+                                <label for="rememberMe" class="xs:text-xs lg:text-base cursor-pointer">Recuerdame</label>
+                            </div>
+                            <a routerLink="/forgot-password" class="xs:text-xs text-prussian-blue-700 dark:text-prussian-blue-200 lg:text-xs xl:text-md 2xl:text-base" >¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <app-button text="Iniciar sesión" type="submit" [disabled]="form.invalid" />
+                    </form>
+                </div>
+                <!-- section 2 -->
+                <div class="h-full flex-auto 2xl:flex 2xl:justify-center 2xl:items-center xl:flex xl:justify-center xl:items-center xs:hidden">
+                    <!-- IconPerson -->
+                    <div class="flex-auto">
+                        <img src="../../../assets/svg/Icono.svg" alt="" srcset="" class="h-auto w-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  absolute right-0 bottom-0 -z-10 2xl:h-[960px] w-auto xl:h-[700px] lg:h-[480px]-->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute right-0 bottom-0 -z-10 2xl:h-[960px] w-auto xl:h-[700px] lg:h-[480px] lg:hidden"><path fill="#01497C" fill-opacity="1" d="M0,64L48,85.3C96,107,192,149,288,149.3C384,149,480,107,576,90.7C672,75,768,85,864,101.3C960,117,1056,139,1152,160C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+</ion-content>
