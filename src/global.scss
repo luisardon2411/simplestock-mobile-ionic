@@ -10,6 +10,7 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -24,3 +25,71 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Montserrat';
+}
+
+.custom-loading .loading-wrapper {
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 20px; /* Agregar padding */
+    box-shadow: 0 2px 10px -5px #000;
+}
+  
+  /* Puedes llegar a elementos más profundos también */
+  .custom-loading .loading-wrapper .loading-content {
+    font-weight: 400; /* Cambiar el color del texto */
+}
+
+/* custom-alert.scss */
+
+ion-alert.custom-alert {
+    --background: #f5f5f5; /* Color de fondo */
+}
+  
+ion-alert.custom-alert .alert-message {
+ color: #333; /* Color del texto */
+}
+  
+ion-alert.custom-alert .alert-header,
+ion-alert.custom-alert .alert-sub-header {
+  font-size: 18px; /* Tamaño de fuente para el título y subtítulo */
+}
+  
+ion-alert.custom-alert .alert-message {
+  font-size: .8rem; /* Tamaño de fuente para el mensaje */
+}
+  
+ion-alert.custom-alert .button {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  font-size: 14px; /* Tamaño de fuente del botón */
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+ion-alert.custom-alert .button:hover {
+  background-color: #0056b3;
+}
+
+@media (prefers-color-scheme: dark){
+  ion-alert.custom-alert {
+    --background: #353535; /* Color de fondo */
+      .alert-message{  
+        color: #ffffff;
+      }
+      .alert-button.sc-ion-alert-md, .alert-button.sc-ion-alert-ios {
+        color: #61A5C2;
+      }
+  }
+  .custom-loading .loading-wrapper {
+    background: #353535;
+    border-radius: 10px;
+    padding: 20px; /* Agregar padding */
+  }
+}
