@@ -11,6 +11,7 @@
 
 /* Core CSS required for Ionic components to work properly */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -91,5 +92,26 @@ ion-alert.custom-alert .button:hover {
     background: #353535;
     border-radius: 10px;
     padding: 20px; /* Agregar padding */
+  }
+}
+
+.scrolled {
+  background-color: rgba(0, 0, 0, 0.5); /* O cualquier otro estilo que desees */
+}
+
+@layer components {
+  .item-list{
+    @apply xs:py-3 xs:px-5 xs:hover:bg-slate-800 xs:cursor-pointer xs:transition-all xs:duration-200
+    xs:flex xs:justify-start xs:items-center xs:gap-2 xs:rounded-xl xs:mb-2
+  }
+  .title-list{
+    @apply xs:text-slate-300
+  }
+  .active-prussian {
+    @apply bg-gradient-to-tr from-prussian-blue-700 to-prussian-blue-300 xs:text-slate-100
+  }
+  .search-bar{
+    @apply bg-gray-100 xs:rounded-md xs:py-2 xs:px-3 xs:outline-none xs:focus:outline-prussian-blue-700 xs:transition-all
+    xs:duration-300
   }
 }

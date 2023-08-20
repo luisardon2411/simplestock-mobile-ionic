@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { IonicModule } from "@ionic/angular";
 import { InputComponent } from "../components/Input/input.component";
 import { ButtonComponent } from "../components/Button/button.component";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { patternValidator } from "../../utils/regex-validation";
 import { LoadingService } from "../../services/loading.service";
 import { AuthImplementationRepository } from "../../data/repositories/auth/auth-implementation.repository";
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
     constructor(
        private fb: FormBuilder, 
        @Inject(AuthRepository) private authImplementation: AuthImplementationRepository,
-       private loadingService: LoadingService
+       private loadingService: LoadingService,
+       @Inject(Router) private router: Router
     ){
       this.createForm();
     }
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
         this.authImplementation.login(credentials).subscribe({
             next: e => {
                 localStorage.setItem('token', e.token);
+                this.router.navigateByUrl('/dashboard');
             },
             complete: () => {}
         })

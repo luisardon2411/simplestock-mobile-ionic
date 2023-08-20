@@ -11,7 +11,8 @@ module.exports = {
       '2xl': '1536px',
     },
     fontFamily:{
-      'Montserrat': ['Montserrat','sans-serif']
+      'Montserrat': ['Montserrat','sans-serif'],
+      'Poppins': ['Poppins','sans-serif'],
     },
     extend: {
       colors: {

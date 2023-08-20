@@ -1,0 +1,18 @@
+ion-menu-button{
+    color: #f5f5f5;
+}
+
+
+#menu-item{
+    font-family: 'Poppins', sans-serif;
+}
+ion-menu::part(backdrop) {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media(min-width: 768px){
+    ion-menu{
+        width: 300px;
+        --border-radius: 30px;
+    }    
+}

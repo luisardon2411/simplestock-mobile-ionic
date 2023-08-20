@@ -1,0 +1,11 @@
+ion-header {
+    background-color: #fdfdfd; // Color de fondo de tu elección
+    
+    ion-toolbar {
+      --background: transparent; // Puedes hacerlo transparente o asignarle otro color.
+    }
+  
+    ion-title {
+      font-size: 24px; // Tamaño de fuente personalizado
+    }
+  }

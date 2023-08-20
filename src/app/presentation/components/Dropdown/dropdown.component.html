@@ -1,0 +1,13 @@
+<!-- Ítem principal -->
+<a class="item-list title-list justify-between" (click)="toggleDropdown()">
+    <div class="flex xs:gap-2 xs:transition-all xs:duration-200">
+        <i class="{{ icon }}"  ></i>
+        <span>{{ title }}</span>
+    </div>
+    <i class="fa fa-angle-down ml-2" [@rotateArrow]="isOpen ? 'open' : 'closed'"></i>
+</a>
+
+<!-- Submenú desplegable -->
+<div [style.overflow]="isOpen ? 'visible' : 'hidden'" class="transition-all duration-300 xs:text-sm xs:px-5" [@slideToggle]="isOpen ? 'open' : 'closed'" >
+    <ng-content></ng-content>
+</div>
