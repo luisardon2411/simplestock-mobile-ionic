@@ -23,8 +23,8 @@ export class ForgotPasswordRepositoryImplementation extends ForgotPasswordReposi
         return this.http.post<ForgotPasswordModel>(`${ this.apiUrl }/verifyCodeTwoFactor`, param)
         .pipe( map( this.forgotPasswordMapper.mapFrom ) )
     }
-    override changePassword(param: { username: string; }): Observable<ForgotPasswordModel> {
-        return this.http.post<ForgotPasswordModel>(`${ this.apiUrl }/changePassword`, param)
+    override changePassword(param: { username: string; password: string }): Observable<ForgotPasswordModel> {
+        return this.http.put<ForgotPasswordModel>(`${ this.apiUrl }/changePassword`, param)
         .pipe( map( this.forgotPasswordMapper.mapFrom ) )
     }
 
