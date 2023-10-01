@@ -1,0 +1,26 @@
+<div *ngIf="!isValidCode" class="xs:mb-4 xs:text-center">
+    <h1 class="xs:text-md xs:font-bold lg:text-lg">Restablecer contraseña</h1>
+    <h3 class="xs:text-xs xs:text-gray-400 lg:text-base">Ingresa el codigo que has recibido en tu correo electrónico
+    </h3>
+</div>
+<section class="flex flex-col items-center xs:gap-5">
+    <form *ngIf="!isValidCode" method="post" class="w-full flex flex-col justify-center items-center"
+        [formGroup]="_form" (submit)="NgSubmit()">
+        <section class="h-full w-full grid grid-cols-6 xs:gap-4">
+            <input *ngFor="let code of codes; let i = index; let last = last" [formControlName]="code"
+                [appInputCodeRef]="code" #codeInput
+                class="appearance-none border border-gray-600 rounded lg:w-12 lg:h-12 xs:w-8 xs:h-8 text-center text-xl leading-tight focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                type="text" maxlength="1" pattern="\d" (keyup)="moveFocus($event, i)" (keypress)="onlyNumber($event)">
+        </section>
+        <div class="xs:flex xs:justify-between xs:items-center xs:mt-5 xs:gap-3">
+            <app-button class="self-center" text="Validar código" type="submit" [disabled]="_form.invalid" />
+            <button [disabled]="!allowResend" type="button" (click)="resendCodeTwoFactor()" 
+            class="xs:rounded-xl xs:py-2 xs:px-2 md:py-4 md:px-4 lg:py-5 lg:px-5 focus:ring-2 focus:ring-prussian-blue-400"
+            [ngClass]="!allowResend ? 'bg-prussian-blue-700/40' : 'bg-prussian-blue-700 dark:shadow-xl'">
+                Reenviar codigo
+                <span *ngIf="!allowResend"> en {{ timer }} segundos </span>
+            </button>
+        </div>
+    </form>
+    <app-new-password *ngIf="isValidCode" [username]="username" />
+</section>
