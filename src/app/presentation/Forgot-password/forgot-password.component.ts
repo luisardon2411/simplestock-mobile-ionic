@@ -11,6 +11,7 @@ import { LoadingService } from "src/app/services/loading.service";
 import { CommonModule } from "@angular/common";
 import { VerifyCodeComponent } from "./verify-code/verify-code.component";
 import { AlertService } from 'src/app/services/alert.service';
+import { AuthenticationModule } from '../../data/authentication.module';
 
 @Component({
     selector: 'app-forgot-password',
@@ -24,7 +25,8 @@ import { AlertService } from 'src/app/services/alert.service';
         ReactiveFormsModule, 
         RouterLink,
         CommonModule,
-        VerifyCodeComponent
+        VerifyCodeComponent,
+        AuthenticationModule
     ],
 })
 export class ForgotPasswordComponent implements OnInit {

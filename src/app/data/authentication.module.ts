@@ -8,6 +8,7 @@ import { HttpErrorInterceptor } from "../interceptors/http-error-interceptor.int
 import { ForgotPasswordRepository } from "../domain/repositories/forgot-password.repository";
 import { SendCodeTwoFactorUseCase } from "../domain/uses-cases/authentication/send-code.usecase";
 import { ForgotPasswordRepositoryImplementation } from "./repositories/auth/forgot-password-implementation.repository";
+import { AuthInterceptor } from '../interceptors/http-auth-interceptor.interceptor';
 // Declarations useCases Factory
 const authLoginUseCaseFactory = 
  (AuthRepo: AuthRepository) => new UserLoginUseCase(AuthRepo)
@@ -33,6 +34,11 @@ export const SendCodeTwoFactorUseCaseProvider = {
         SendCodeTwoFactorUseCaseProvider,
         {
             provide: ForgotPasswordRepository, useClass: ForgotPasswordRepositoryImplementation
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
         },
         {
             provide: HTTP_INTERCEPTORS,

@@ -1,10 +1,10 @@
 <!-- Ítem principal -->
-<a class="item-list title-list justify-between" (click)="toggleDropdown()">
+<a class="item-list title-list justify-between" [routerLink]="route" [routerLinkActive]="routerLinkActivate" >
     <div class="flex xs:gap-2 xs:transition-all xs:duration-200">
         <i class="{{ icon }}"  ></i>
         <span>{{ title }}</span>
     </div>
-    <i class="fa fa-angle-down ml-2" [@rotateArrow]="isOpen ? 'open' : 'closed'"></i>
+    <i class="fa fa-angle-down ml-2" (click)="toggleDropdown()" [@rotateArrow]="isOpen ? 'open' : 'closed'"></i>
 </a>
 
 <!-- Submenú desplegable -->

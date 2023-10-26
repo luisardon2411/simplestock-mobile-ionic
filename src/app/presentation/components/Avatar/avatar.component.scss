@@ -1,0 +1,15 @@
+/* avatar.component.scss */
+.avatar-container {
+    --avatar-size: 200px;
+
+    .avatar-image {
+        width: var(--avatar-size);
+        height: var(--avatar-size);
+    }
+
+    .avatar-overlay {
+        width: var(--avatar-size);
+        height: var(--avatar-size);
+        border-radius: 50%; // Esto dará la forma redonda
+    }
+}

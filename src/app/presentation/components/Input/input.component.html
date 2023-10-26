@@ -1,5 +1,7 @@
 <div class="sm:mb-1 lg:mb-2 xl:mb-3">
-    <input [type]="type"
+    <input 
+    [id]="id"
+    [type]="type"
     [value]="value"
     (input)="updateValue($event)"
     (blur)="onTouch()"

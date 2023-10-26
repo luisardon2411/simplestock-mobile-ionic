@@ -28,8 +28,12 @@
     "@capacitor/ios": "5.2.2",
     "@capacitor/keyboard": "5.0.6",
     "@capacitor/status-bar": "5.0.6",
+    "@cloudinary/ng": "^2.0.0",
+    "@cloudinary/url-gen": "^1.11.2",
     "@ionic/angular": "^7.0.0",
+    "apexcharts": "^3.44.0",
     "ionicons": "^7.0.0",
+    "ng-apexcharts": "^1.8.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

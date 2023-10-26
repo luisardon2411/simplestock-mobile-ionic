@@ -9,7 +9,14 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                loadComponent: () => import('./dashboard/main/main-dashboard.component').then( m => m.MainDashboardComponent )
+                loadComponent: () => import('./dashboard/main/main-dashboard.component').then( m => m.MainDashboardComponent ),
+            },
+            // {
+            //     path: 'clients',
+            // }
+            {
+                path: 'clientes',
+                loadChildren: () => import('../clients/clients.routes').then( m => m.routes )
             }
         ]
     },

@@ -1,0 +1,29 @@
+<section *ngIf=" avatarType === 'sidebar' " 
+    class="flex flex-col justify-center items-center relative"
+>
+    <div class="relative"
+    (mouseover)="hovering = true"
+    (mouseleave)="hovering = false"
+    >
+        <!-- Avatar -->
+        <img src="{{ user?.authenticated?.photo ? user?.authenticated?.photo : defaultAvatar }}" 
+            width="200px"
+            height="200px"
+            alt="profile"
+            class="object-cover xs:rounded-full xs:h-24 xs:w-24 xs:max-h-32 xs:shadow-xl xs:mb-5 relative z-10">
+        
+        <!-- Overlay para Cambiar Foto -->
+        <div class="absolute top-0 left-0 z-20 xs:rounded-full xs:h-24 xs:w-24 xs:max-h-32 bg-black bg-opacity-70 
+            flex flex-col items-center justify-center xs:gap-1 xl:gap-2 cursor-pointer"
+            *ngIf="hovering"
+            (click)="triggerFileInput()">
+            <i class="fa-solid fa-image text-white text-sm"></i>
+            <span class="text-white text-xs font-bold">Cambiar foto</span>
+        </div>
+    </div>
+    <!-- Information aditional -->
+    <div class="text-center text-zinc-200 relative">
+        <h4 class="font-bold tracking-tight xs:text-md capitalize"> {{ nameLastname() }} </h4>
+        <span class="xs:text-xs xs:text-slate-500 xs:font-bold xs:tracking-tighter"> {{ user?.authenticated?.email }} </span>
+    </div>
+</section>

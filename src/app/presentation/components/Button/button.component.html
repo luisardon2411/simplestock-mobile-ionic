@@ -1,9 +1,9 @@
 <button [type]="type"
+(click)="onClick"
 [disabled]="disabled"
 [ngClass]="disabled ? 'bg-prussian-blue-700/40' : 'bg-prussian-blue-700 dark:shadow-xl'"
 class="h-full w-full xs:px-4 xs:py-3 sm:p-4 xl:p-5
 text-white rounded-xl sm:text-sm md:text-md xl:text-xl
-transition-all duration-300
-dark:shadow-prussian-blue-700">
+transition-all duration-300">
     {{text}}
 </button>

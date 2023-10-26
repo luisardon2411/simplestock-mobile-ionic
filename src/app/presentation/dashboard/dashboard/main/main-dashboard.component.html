@@ -1,13 +1,17 @@
-<ion-grid [fixed]="true" >
-    <ion-row>
-        <ion-col size="12">
-            <!-- Card Bienvenida -->
-            <div class="bg-zinc-200">
-                
-            </div>
-        </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col size="12">Card 2s</ion-col>
-    </ion-row>
-</ion-grid>
+<div class="h-full w-full
+ ion-padding dark:bg-prussian-blue-1000 flex flex-col flex-shrink xs:gap-5
+ overflow-y-auto">
+    <!-- Breadcrumb -->
+    <div>
+
+    </div>
+    <!-- Content -->
+    <section class="relative flex flex-wrap justify-between">
+        <app-greeting [user]="getFirstName()" class="self-center" />
+        <app-digital-clock />
+    </section>
+    <!-- Cards -->
+    <app-cards-dashboard />
+    <!-- Charts -->
+    <app-line-chart />
+</div>

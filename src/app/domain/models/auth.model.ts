@@ -8,6 +8,8 @@ abstract class AuthPayloadModel{
     public username!: string;
     public name!: string;
     public lastName!: string;
+    public photo?: string;
+    public email?: string;
     public roles!: RoleModel[];
 }
 

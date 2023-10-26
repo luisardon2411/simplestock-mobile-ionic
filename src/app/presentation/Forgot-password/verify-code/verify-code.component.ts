@@ -98,17 +98,19 @@ export class VerifyCodeComponent implements OnInit {
     NgSubmit(){
         if(!this._form.valid) return;
         this.loadingService.presentLoading('Verificando código...');
-        this.forgotPassImplentation.verifyCodeTwoFactor({ code: this.codeUnify(), username: this.username }).subscribe({
-            next: response => {
-                this.isValidCode = true;
-                this.loadingService.dismissLoading();
-            },
-            complete: () => {
-            },
-            error: err => {
-                this.loadingService.dismissLoading();
-            }
-        })
+        setTimeout( () => {
+            this.forgotPassImplentation.verifyCodeTwoFactor({ code: this.codeUnify(), username: this.username }).subscribe({
+                next: response => {
+                    this.isValidCode = true;
+                    this.loadingService.dismissLoading();
+                },
+                complete: () => {
+                },
+                error: err => {
+                    this.loadingService.dismissLoading();
+                }
+            })
+        },2000)
     }
 
     resendCodeTwoFactor(){

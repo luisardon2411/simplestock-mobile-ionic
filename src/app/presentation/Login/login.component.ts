@@ -8,13 +8,23 @@ import { patternValidator } from "../../utils/regex-validation";
 import { LoadingService } from "../../services/loading.service";
 import { AuthImplementationRepository } from "../../data/repositories/auth/auth-implementation.repository";
 import { AuthRepository } from "../../domain/repositories/auth.repository";
+import { AuthenticationService } from "src/app/services/authentication.service";
+import { AuthenticationModule } from '../../data/authentication.module';
+
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     standalone: true,
-    imports: [IonicModule, ReactiveFormsModule, InputComponent, ButtonComponent, RouterLink],
+    imports: [
+        IonicModule, 
+        ReactiveFormsModule, 
+        InputComponent, 
+        ButtonComponent, 
+        RouterLink,
+        AuthenticationModule,
+    ],
 })
 export class LoginComponent implements OnInit {
     rememberMe: boolean = false;
@@ -27,7 +37,8 @@ export class LoginComponent implements OnInit {
        private fb: FormBuilder, 
        @Inject(AuthRepository) private authImplementation: AuthImplementationRepository,
        private loadingService: LoadingService,
-       @Inject(Router) private router: Router
+       @Inject(Router) private router: Router,
+       private authenticationService: AuthenticationService
     ){
       this.createForm();
     }
@@ -50,18 +61,20 @@ export class LoginComponent implements OnInit {
         }
         this.authImplementation.login(credentials).subscribe({
             next: e => {
+                this.loadingService.dismissLoading();
                 localStorage.setItem('token', e.token);
+                this.authenticationService.setCurrentUser(e);
                 this.router.navigateByUrl('/dashboard');
             },
-            complete: () => {}
+            complete: () => {},
+            error: error => {
+                this.loadingService.dismissLoading();
+            }
         })
-        } catch(error) {
-        }finally{
-          await this.loadingService.dismissLoading();
+        }catch(error){
         }
     }
     saveRememberMe(){
         this.rememberMe = !this.rememberMe;
     }
 }
-

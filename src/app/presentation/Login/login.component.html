@@ -35,8 +35,20 @@
                         <div class="relative xs:mb-3 2xl:mb-1 xl:mb-4 lg:mb-4">
                             <h5 class="xs:text-xs xs:text-center lg:text-start lg:text-sm xl:text-sm 2xl:text-base">Ingresa tus credenciales para acceder</h5>
                         </div>
-                        <app-input formControlName="username" [type]="'text'" placeholder="jhon.sweet" [errorMessage]="form.get('username')?.errors" />
-                        <app-input formControlName="password" [type]="'password'" placeholder="* * * * * * *" [errorMessage]="form.get('password')?.errors" />
+                        <app-input 
+                        formControlName="username" 
+                        [type]="'text'" 
+                        placeholder="jhon.sweet" 
+                        [errorMessage]="form.get('username')?.errors"
+                        id="usuario"
+                         />
+                        <app-input 
+                        formControlName="password" 
+                        [type]="'password'" 
+                        placeholder="* * * * * * *" 
+                        [errorMessage]="form.get('password')?.errors"
+                        id="contraseña"
+                         />
                         <div class="flex xs:gap-3 justify-between xs:mb-2">
                             <div class="relative flex justify-center items-center gap-2">
                                 <input type="checkbox" [checked]="saveRememberMe()" id="rememberMe" class="outline-prussian-blue-300 transition-all duration-300">

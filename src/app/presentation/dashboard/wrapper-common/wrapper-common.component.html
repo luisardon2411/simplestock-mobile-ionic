@@ -1,10 +1,22 @@
-<ion-header class="ion-no-border">
-    <ion-toolbar class="top-0 xs:px-3">
+<ion-header class="ion-no-border" [translucent]="true" >
+    <ion-toolbar class="top-0 xs:px-3 dark:bg-prussian-blue-1000 dark:border-b-[1px] dark:border-b-zinc-700">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <div class="relative">
-            <input type="search" id="" placeholder="Buscar" class="search-bar">
+            <input type="search" placeholder="Buscar" class="search-bar">
+        </div>
+        <div slot="end" class="flex xs:gap-4 justify-center items-center">
+            <ion-icon 
+            class="hover:bg-gray-200 cursor-pointer"
+            name="notifications-outline" size="" aria-label="notificaciones" ></ion-icon>
+            <div class="relative flex justify-center items-center">
+                <img src="{{ user?.authenticated?.photo ? user?.authenticated?.photo : '../../../../assets/images/default-profile.png' }}" 
+                alt="profile"
+                srcset=""
+                class="object-cover xs:rounded-full xs:h-10 xs:w-10 xs:max-h-12
+                xs:shadow-xl cursor-pointer self-center">
+            </div>
         </div>
     </ion-toolbar>
 </ion-header>

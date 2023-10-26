@@ -7,7 +7,7 @@ import { AuthenticationModule } from './data/authentication.module';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   standalone: true,
-  imports: [IonicModule, AuthenticationModule],
+  imports: [IonicModule],
 })
 export class AppComponent {
   constructor() {}

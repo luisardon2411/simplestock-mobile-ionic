@@ -106,15 +106,17 @@ export class NewPasswordComponent {
     NgSubmit(){
         if( !this._form.valid ) return;
         this.loadingService.presentLoading('Cambiando contraseña, por favor espere');
-        this.forgotPasswordImplementation.changePassword({ username: this.username, password: this._form.get('password')?.value })
-        .subscribe({
-            next: response => {
-                this.alertService.showAlert('Su contraseña ha sido cambiada con éxito, por favor inicie sesión con su nueva contraseña', 'Contraseña cambiada', ['Aceptar']);
-            },
-            complete: () => {
-                this.loadingService.dismissLoading();
-                this.router.navigateByUrl('/login');
-            }
-        })
+        setTimeout( () => {
+            this.forgotPasswordImplementation.changePassword({ username: this.username, password: this._form.get('password')?.value })
+            .subscribe({
+                next: response => {
+                    this.alertService.showAlert('Su contraseña ha sido cambiada con éxito, por favor inicie sesión con su nueva contraseña', 'Contraseña cambiada', ['Aceptar']);
+                },
+                complete: () => {
+                    this.loadingService.dismissLoading();
+                    this.router.navigateByUrl('/login');
+                }
+            })
+        }, 2000);
     }
 }

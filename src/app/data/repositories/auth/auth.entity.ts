@@ -7,6 +7,8 @@ interface AuthPayloadEntity {
     username: string;
     name: string;
     lastName: string;
+    photo?: string;
+    email?: string;
     roles: AuthRoleEntity[];
 }
 

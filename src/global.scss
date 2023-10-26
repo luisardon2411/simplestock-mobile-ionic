@@ -112,6 +112,6 @@ ion-alert.custom-alert .button:hover {
   }
   .search-bar{
     @apply bg-gray-100 xs:rounded-md xs:py-2 xs:px-3 xs:outline-none xs:focus:outline-prussian-blue-700 xs:transition-all
-    xs:duration-300
+    xs:duration-300 dark:bg-gray-600
   }
 }

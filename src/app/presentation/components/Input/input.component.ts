@@ -20,6 +20,7 @@ import { ValidationService } from "src/app/services/custom-validation.service";
 export class InputComponent implements ControlValueAccessor {
     @Input() type: 'text' | 'number' | 'password' = 'text';
     @Input() placeholder: string = '';
+    @Input() id: string = ''
     @Input() set errorMessage(errors: ValidationErrors | null | undefined){
         this._errors = this.customValidation.getValidationErrorMessage(errors);
     }

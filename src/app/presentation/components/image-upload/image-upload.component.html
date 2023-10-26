@@ -1,0 +1,34 @@
+<article class="h-full w-full flex flex-shrink flex-col">
+    <div 
+    *ngIf="!imageUrl"
+    class="upload-box flex-1 flex flex-col xs:gap-4" 
+    (click)="openFileSelector()"
+    (dragover)="dragOverEvent($event)" 
+    (dragleave)="dragLeaveEvent($event)" 
+    (drop)="dropEvent($event)">
+    <i class="fa-solid fa-camera-retro text-7xl animate-bounce"></i>
+    <p class="dark:text-white xs:text-sm xl:text-lg ">Arrastra y suelta tu fotografía o toca aquí para seleccionarla.</p>
+    <input type="file" (change)="fileChangeEvent($event)" #fileInput>
+    </div>
+    <div *ngIf="imageUrl" class="flex-auto flex flex-col justify-center items-center
+    xs:gap-10">
+        <img  [src]="imageUrl" alt="Previsualización" 
+        class="preview-image xs:h-80 xs:w-80 object-contain xs:rounded-full"
+        [ngClass]="imageUrl ? 'opacity-60' : ''">
+        <div class="relative self-center flex flex-col xs:gap-5" aria-label="confirmacion-cambio-fotografia">
+            <h5 class="xs:text-sm xs:font-bold"> ¿Estas seguro de realizar este cambio? </h5>
+            <div class="relative flex flex-row xs:gap-3 sm:gap-2">
+                <button 
+                (click)="uploadImage()"
+                [disabled]="loading"
+                [ngClass]="loading ? 'bg-prussian-blue-700/40' : 'bg-prussian-blue-700 dark:shadow-xl'"
+                class="h-full w-full xs:px-4 xs:py-5 sm:p-4 xl:p-5
+                text-white rounded-xl xs:text-sm md:text-md xl:text-xl
+                transition-all duration-300
+                dark:shadow-prussian-blue-700"> Aceptar </button>
+                <app-button text="Cancelar" />
+            </div>
+        </div>
+        <ion-progress-bar *ngIf="loading" [value]="progress"></ion-progress-bar>
+    </div>
+</article>

@@ -4,13 +4,27 @@ import { IonicModule } from "@ionic/angular";
 import { DropdownComponent } from "../../components/Dropdown/dropdown.component";
 import { CommonModule } from "@angular/common";
 import { WrapperCommonComponent } from "../wrapper-common/wrapper-common.component";
+import { AuthenticationService } from "src/app/services/authentication.service";
+import AuthModel from "src/app/domain/models/auth.model";
+import { AvatarComponent } from "../../components/Avatar/avatar.component";
+import { AuthRepository } from "src/app/domain/repositories/auth.repository";
+import { AuthImplementationRepository } from "src/app/data/repositories/auth/auth-implementation.repository";
 
 @Component({
     selector: "app-dashboard",
     templateUrl: "./dashboard.component.html",
     styleUrls: ["./dashboard.component.scss"],
     standalone: true,
-    imports: [IonicModule, RouterLink, RouterLinkActive, DropdownComponent, CommonModule, WrapperCommonComponent]
+    imports: [
+        IonicModule, 
+        RouterLink, 
+        RouterLinkActive, 
+        DropdownComponent, 
+        CommonModule, 
+        WrapperCommonComponent,
+        AvatarComponent,
+    ],
+    providers: [{ provide: AuthRepository, useClass: AuthImplementationRepository }]
 })
 export class DashboardComponent implements OnInit {
 
@@ -22,16 +36,20 @@ export class DashboardComponent implements OnInit {
                 {
                     subtitle: 'Agregar cliente',
                     icon: 'fa-solid fa-plus',
+                    route: 'clientes/nuevo-cliente'
                 },
                 {
                     subtitle: 'Modificar cliente',
                     icon: 'fa-solid fa-pen',
+                    route: 'clientes/modificar-cliente'
                 },
                 {
                     subtitle: 'Eliminar cliente',
                     icon: 'fa-solid fa-trash',
+                    route: 'clientes/eliminar-cliente'
                 }
-            ]
+            ],
+            route: 'clientes'
         },
         {
             title: 'Proveedores',
@@ -49,7 +67,8 @@ export class DashboardComponent implements OnInit {
                     subtitle: 'Eliminar proveedor',
                     icon: 'fa-solid fa-trash',
                 }
-            ]
+            ],
+            route: 'proveedores'
         },
         {
             title: 'Productos',
@@ -67,7 +86,8 @@ export class DashboardComponent implements OnInit {
                     subtitle: 'Eliminar producto',
                     icon: 'fa-solid fa-trash',
                 }
-            ]
+            ],
+            route: 'productos'
         }
     ]
     public services: Array<any> = [
@@ -81,6 +101,7 @@ export class DashboardComponent implements OnInit {
                     link: '/sales/register'
                 }
             ],
+            route: 'ventas'
         },
         {
             title: 'Sucursales',
@@ -100,11 +121,18 @@ export class DashboardComponent implements OnInit {
                     subtitle: 'Eliminar sucursal',
                     icon: 'fa-solid fa-trash',
                 }
-            ]
+            ],
+            route: 'sucursales'
         }
     ]
     public menuType: string = 'overlay'
+    public user: AuthModel | null = null;
+    constructor( 
+        private authenticationService: AuthenticationService,
+    ){}
+
     ngOnInit(): void {
-        document.title = 'dashboard'
+        document.title = 'dashboard';
+        this.user = this.authenticationService.currentUser();
     }
 }
