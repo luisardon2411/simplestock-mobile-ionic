@@ -1,0 +1,121 @@
+<div class="flex flex-col relative">
+
+  <div [formGroup]="form" class="mb-4 flex flex-col lg:flex-row lg:justify-between">
+    <select
+      id="itemsPerPage"
+      formControlName="itemsPerPage"
+      class="border rounded p-2 appearance-none "
+    >
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option value="50">50</option>
+    </select>
+    <input
+      formControlName="searchText"
+      placeholder="Buscar"
+      class="dark:bg-prussian-blue-1000 focus:shadow-soft-primary-outline lg:text-sm text-base leading-5.6 ease-soft block appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-prussian-blue-500 focus:outline-none mb-2 lg:mb-0"
+    />
+  </div>
+  <div class="relative overflow-x-auto">
+    <table class="min-w-full text-sm text-left dark:text-gray-400">
+      <thead class="text-xs text-gray-700 capitalize bg-gray-100 dark:bg-prussian-blue-900">
+        <tr>
+          <th
+            scope="col"
+            *ngFor="let column of columns"
+            class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            {{ column }}
+            <div [formGroup]="form" class="mt-2">
+                <input
+                formControlName="{{ column }}"
+                placeholder="Filter"
+                class="focus:shadow-soft-primary-outline lg:text-sm text-base leading-5.6 ease-soft block appearance-none rounded-lg border border-solid border-gray-300 bg-white dark:bg-prussian-blue-1000 bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-prussian-blue-500 focus:outline-none w-full"
+                />
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="data && data.length; else noData" class="w-full">
+          <ng-container *ngIf="filteredData.length && data.length; else noRecords" class="w-full">
+            <tr *ngFor="let row of paginatedData" class="bg-white border-b dark:bg-prussian-blue-1000 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td
+                slot="row"
+                *ngFor="let column of columns"
+                class="whitespace-normal p-2"
+              >
+                {{ row[column] }}
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noData>
+    <div class="text-center py-4 w-full">
+      No hay datos disponibles.
+    </div>
+  </ng-template>
+  
+  <ng-template #noRecords>
+    <div class="text-center py-4 w-full">
+      Registro no encontrado.
+    </div>
+  </ng-template>
+
+  <div class="flex flex-wrap justify-between items-center mt-5">
+    <div class="flex gap-2">
+      <button
+        (click)="currentPage = 1; paginateData()"
+        [disabled]="currentPage === 1"
+        class="px-4 py-2 border rounded bg-gray-100 dark:bg-prussian-blue-1000 dark:border dark:hover:bg-none cursor-pointer"
+      >
+          <i class="fa-solid fa-backward"></i>
+      </button>
+      <button
+        (click)="currentPage = currentPage - 1; paginateData()"
+        [disabled]="currentPage === 1"
+        class="px-4 py-2 border rounded bg-gradient-to-br from-prussian-blue-400 to-prussian-blue-800 text-white 
+        hover:from-prussian-blue-500 hover:to-prussian-blue-900"
+      >
+          <i class="fa-solid fa-arrow-left"></i>
+      </button>
+    </div>
+  
+    <div class="flex gap-3 mt-2 lg:mt-0">
+      <ng-container *ngFor="let page of pages">
+        <button
+          (click)="currentPage = page; paginateData()"
+          [disabled]="currentPage === page"
+          class="px-4 py-2 border rounded-full bg-prussian-blue-200 dark:bg-prussian-blue-1000 dark:text-prussian-blue-600 dark:border-prussian-blue-300 border-prussian-blue-700 text-prussian-blue-700 lg:text-sm text-base"
+          [ngClass]="{'bg-prussian-blue-600/50 text-white': currentPage === page}"
+        >
+          {{ page }}
+        </button>
+      </ng-container>
+    </div>
+
+    <div class="flex gap-2 mt-2 lg:mt-0">
+      <button
+        (click)="currentPage = currentPage + 1; paginateData()"
+        [disabled]="currentPage * itemsPerPage >= filteredData.length"
+        class="px-4 py-2 border rounded bg-gradient-to-br from-prussian-blue-400 to-prussian-blue-800 text-white 
+        hover:from-prussian-blue-500 hover:to-prussian-blue-900"
+      >
+          <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <button
+        (click)="currentPage = Math.ceil(filteredData.length / itemsPerPage); paginateData()"
+        [disabled]="currentPage * itemsPerPage >= filteredData.length"
+        class="px-4 py-2 border rounded bg-gray-100 dark:bg-prussian-blue-1000 dark:border dark:hover:bg-none cursor-pointer"
+      >
+          <i class="fa-solid fa-forward"></i>
+      </button>
+    </div>
+  </div>
+</div>

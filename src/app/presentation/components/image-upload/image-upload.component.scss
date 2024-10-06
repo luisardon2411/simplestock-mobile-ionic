@@ -2,7 +2,7 @@
     width: 100%;
     height: 200px;
     padding: 2.1rem;
-    background: rgb(15 23 42);
+    background: rgb(238, 238, 238);
     border: 3px dashed #ccc;
     display: flex;
     align-items: center;
@@ -21,8 +21,11 @@
 }
 
 @media(prefers-color-scheme: dark) {
+    .upload-box{
+        background: #18181C;
+    }
     .upload-box:hover{
-        background: rgb(14, 21, 39);
+        background: #18181C;
     }
 }
 

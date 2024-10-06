@@ -5,7 +5,7 @@ import { ForgotPasswordRepository } from "../../repositories/forgot-password.rep
 
 export class ChangePasswordUseCase implements UseCase<{ username: string }, ForgotPasswordModel>{
     constructor( private forgotPasswordRepository: ForgotPasswordRepository ){}
-    execute(state: { username: string; }): Observable<ForgotPasswordModel> {
+    execute(state: { username: string; password: string; }): Observable<ForgotPasswordModel> {
         return this.forgotPasswordRepository.changePassword(state);
     }
 }

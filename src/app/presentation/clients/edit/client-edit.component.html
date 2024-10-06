@@ -1,0 +1,24 @@
+<div class="h-full w-full
+ion-padding dark:bg-prussian-blue-1000 flex flex-col flex-shrink xs:gap-5
+overflow-y-auto">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <div class="flex gap-4">
+            <input type="text" formControlName="customerId" placeholder="ID del cliente" class="input">
+            <button type="submit" class="button">Buscar cliente</button>
+        </div>
+    </form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-2 xs:gap-5 xs:p-7">
+            <input type="text" formControlName="nit" placeholder="NIT del cliente" class="input">
+            <input type="text" formControlName="alias" placeholder="Alias del cliente" class="input">
+            <input type="text" formControlName="name" placeholder="Nombre del cliente" class="input">
+            <input type="text" formControlName="address" placeholder="Dirección del cliente" class="input">
+            <input type="text" formControlName="phone" placeholder="Teléfono del cliente" class="input">
+            <input type="text" formControlName="occupation" placeholder="Ocupación del cliente" class="input">
+            <input type="text" formControlName="contact" placeholder="Contacto del cliente" class="input">
+            <input type="text" formControlName="cellphone" placeholder="Celular del cliente" class="input">
+            <input type="email" formControlName="email" placeholder="Correo electrónico del cliente" class="input">
+            <button type="submit" class="button col-span-2 bg-gradient-to-r from-prussian-blue-600 to-prussian-blue-800 xs:p-3 rounded-lg text-white">Actualizar cliente</button>
+        </div>
+    </form>
+</div>

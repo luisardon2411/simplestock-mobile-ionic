@@ -1,0 +1,14 @@
+/* Añadir esto al CSS para ajustar el espacio entre los elementos */
+.table-container {
+    overflow-x: auto;
+}
+
+.table-container table {
+    min-width: 1000px; /* Ajusta esto según la necesidad */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espacio entre elementos */
+}
